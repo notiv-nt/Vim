@@ -285,7 +285,8 @@ class MoveDownFoldFix extends MoveByScreenLineMaintainDesiredColumn {
 
 @RegisterAction
 class MoveDown extends BaseMovement {
-  keys = [['j'], ['<down>']];
+  // NOTIV
+  keys = [['h'], ['<down>']]; // keys = [['j'], ['<down>']];
   preservesDesiredColumn() {
     return true;
   }
@@ -310,7 +311,8 @@ class MoveDown extends BaseMovement {
 
 @RegisterAction
 class MoveUp extends BaseMovement {
-  keys = [['k'], ['<up>']];
+  // NOTIV
+  keys = [['t'], ['<up>']]; // keys = [['k'], ['<up>']];
   preservesDesiredColumn() {
     return true;
   }
@@ -431,7 +433,8 @@ class ArrowsInReplaceMode extends BaseMovement {
 
 @RegisterAction
 class CommandNextSearchMatch extends BaseMovement {
-  keys = ['n'];
+  // NOTIV
+  keys = ['<Nope>']; // keys = ['n'];
   isJump = true;
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
@@ -665,7 +668,8 @@ async function ensureEditorIsActive(editor: vscode.TextEditor) {
 
 @RegisterAction
 class MoveLeft extends BaseMovement {
-  keys = [['h'], ['<left>'], ['<BS>'], ['<C-BS>'], ['<S-BS>']];
+  // NOTIV
+  keys = [['d'], ['<left>'], ['<BS>'], ['<C-BS>'], ['<S-BS>']]; // keys = [['h'], ['<left>'], ['<BS>'], ['<C-BS>'], ['<S-BS>']];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return shouldWrapKey(vimState.currentMode, this.keysPressed[0])
@@ -678,7 +682,8 @@ class MoveLeft extends BaseMovement {
 
 @RegisterAction
 class MoveRight extends BaseMovement {
-  keys = [['l'], ['<right>'], [' ']];
+  // NOTIV
+  keys = [['n'], ['<right>']]; // keys = [['l'], ['<right>'], [' ']];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return shouldWrapKey(vimState.currentMode, this.keysPressed[0])
@@ -742,7 +747,8 @@ class MoveDownUnderscore extends BaseMovement {
 
 @RegisterAction
 class MoveToColumn extends BaseMovement {
-  keys = ['|'];
+  // NOTIV
+  keys = ['<Nope>']; // keys = ['|'];
 
   public async execActionWithCount(
     position: Position,
@@ -787,7 +793,8 @@ function findHelper(
 
 @RegisterAction
 class MoveFindForward extends BaseMovement {
-  keys = ['f', '<character>'];
+  // NOTIV
+  keys = ['u', '<character>']; // keys = ['f', '<character>'];
 
   public async execActionWithCount(
     position: Position,
@@ -827,7 +834,8 @@ class MoveFindForward extends BaseMovement {
 
 @RegisterAction
 class MoveFindBackward extends BaseMovement {
-  keys = ['F', '<character>'];
+  // NOTIV
+  keys = ['U', '<character>']; // keys = ['F', '<character>'];
 
   public async execActionWithCount(
     position: Position,
@@ -932,7 +940,8 @@ class MoveTilBackward extends BaseMovement {
 
 @RegisterAction
 class MoveRepeat extends BaseMovement {
-  keys = [';'];
+  // NOTIV
+  keys = ['<Nope>']; // keys = [';'];
 
   public async execActionWithCount(
     position: Position,
@@ -949,7 +958,8 @@ class MoveRepeat extends BaseMovement {
 
 @RegisterAction
 class MoveRepeatReversed extends BaseMovement {
-  keys = [','];
+  // NOTIV
+  keys = ['<Nope>']; // keys = [','];
 
   public async execActionWithCount(
     position: Position,
@@ -974,7 +984,8 @@ class MoveRepeatReversed extends BaseMovement {
 
 @RegisterAction
 class MoveLineEnd extends BaseMovement {
-  keys = [['$'], ['<End>'], ['<D-right>']];
+  // NOTIV
+  keys = [['b'], ['<End>'], ['<D-right>']]; // keys = [['$'], ['<End>'], ['<D-right>']];
   setsDesiredColumnToEOL = true;
 
   public async execActionWithCount(
@@ -982,7 +993,18 @@ class MoveLineEnd extends BaseMovement {
     vimState: VimState,
     count: number
   ): Promise<Position | IMovement> {
-    return position.getDown(Math.max(count - 1, 0)).getLineEnd();
+    // NOTIV ----------------
+    const endPosition = position.getDown(Math.max(count - 1, 0)).getLineEnd();
+    let pos: Position | null = null;
+
+    if (endPosition.character === 0) {
+      pos = new Position(endPosition.line, 0);
+    } else {
+      pos = new Position(endPosition.line, endPosition.character - 1);
+    }
+
+    return pos;
+    // NOTIV /---------------
   }
 }
 
@@ -1219,7 +1241,8 @@ class MoveScreenToLeftHalf extends MoveByScreenLine {
 
 @RegisterAction
 class MoveToLineFromViewPortTop extends MoveByScreenLine {
-  keys = ['H'];
+  // NOTIV
+  keys = ['\\']; // keys = ['H'];
   movementType: CursorMovePosition = 'viewPortTop';
   by: CursorMoveByUnit = 'line';
   value = 1;
@@ -1228,7 +1251,8 @@ class MoveToLineFromViewPortTop extends MoveByScreenLine {
 
 @RegisterAction
 class MoveToLineFromViewPortBottom extends MoveByScreenLine {
-  keys = ['L'];
+  // NOTIV
+  keys = ['|']; // keys = ['L'];
   movementType: CursorMovePosition = 'viewPortBottom';
   by: CursorMoveByUnit = 'line';
   value = 1;
@@ -1277,7 +1301,8 @@ class MoveNextLineNonBlank extends BaseMovement {
 
 @RegisterAction
 class MoveNonBlankFirst extends BaseMovement {
-  keys = ['g', 'g'];
+  // NOTIV
+  keys = ['i']; // keys = ['g', 'g'];
   isJump = true;
 
   public async execActionWithCount(
@@ -1296,7 +1321,8 @@ class MoveNonBlankFirst extends BaseMovement {
 
 @RegisterAction
 class MoveNonBlankLast extends BaseMovement {
-  keys = ['G'];
+  // NOTIV
+  keys = ['I']; // keys = ['G'];
   isJump = true;
 
   public async execActionWithCount(
@@ -1327,7 +1353,8 @@ class MoveNonBlankLast extends BaseMovement {
 
 @RegisterAction
 class MoveWordBegin extends BaseMovement {
-  keys = ['w'];
+  // NOTIV
+  keys = [',']; // keys = ['w'];
 
   public async execAction(
     position: Position,
@@ -1393,7 +1420,8 @@ class MoveWordBegin extends BaseMovement {
 
 @RegisterAction
 class MoveFullWordBegin extends BaseMovement {
-  keys = [['W'], ['<C-right>']];
+  // NOTIV
+  keys = [['<'], ['<C-right>']]; // keys = [['W'], ['<C-right>']];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     if (
@@ -1412,7 +1440,8 @@ class MoveFullWordBegin extends BaseMovement {
 
 @RegisterAction
 class MoveWordEnd extends BaseMovement {
-  keys = ['e'];
+  // NOTIV
+  keys = ['.']; // keys = ['e'];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return position.nextWordEnd(vimState.document);
@@ -1427,7 +1456,8 @@ class MoveWordEnd extends BaseMovement {
 
 @RegisterAction
 class MoveFullWordEnd extends BaseMovement {
-  keys = ['E'];
+  // NOTIV
+  keys = ['>']; // keys = ['E'];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return position.nextWordEnd(vimState.document, { wordType: WordType.Big });
@@ -1458,7 +1488,8 @@ class MoveLastFullWordEnd extends BaseMovement {
 
 @RegisterAction
 class MoveBeginningWord extends BaseMovement {
-  keys = [['b'], ['<C-left>']];
+  // NOTIV
+  keys = [['x'], ['<C-left>']]; // keys = [['b'], ['<C-left>']];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return position.prevWordStart(vimState.document);
@@ -1467,7 +1498,8 @@ class MoveBeginningWord extends BaseMovement {
 
 @RegisterAction
 class MoveBeginningFullWord extends BaseMovement {
-  keys = ['B'];
+  // NOTIV
+  keys = ['X']; // keys = ['B'];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return position.prevWordStart(vimState.document, { wordType: WordType.Big });
@@ -1496,7 +1528,8 @@ class MoveNextSentenceBegin extends BaseMovement {
 
 @RegisterAction
 class MoveParagraphEnd extends BaseMovement {
-  keys = ['}'];
+  // NOTIV
+  keys = ['H']; // keys = ['}'];
   isJump = true;
   iteration = 0;
   isFirstLineWise = false;
@@ -1551,7 +1584,8 @@ class MoveParagraphEnd extends BaseMovement {
 
 @RegisterAction
 class MoveParagraphBegin extends BaseMovement {
-  keys = ['{'];
+  // NOTIV
+  keys = ['T']; // keys = ['{'];
   isJump = true;
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {

@@ -224,7 +224,8 @@ export class ModeHandler implements vscode.Disposable, IModeHandler {
               ModeHandler.logger.debug('Selections: Creating Visual Selection from command!');
               this.vimState.cursorStopPosition = selection.active;
               this.vimState.cursorStartPosition = selection.anchor;
-              await this.setCurrentMode(Mode.Visual);
+              // NOTIV
+              // await this.setCurrentMode(Mode.Visual);
               await this.updateView({ drawSelection: false, revealRange: false });
               return;
             }

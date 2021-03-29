@@ -31,7 +31,8 @@ abstract class CamelCaseTextObjectMovement extends TextObjectMovement {
 // based off of `MoveWordBegin`
 @RegisterAction
 class MoveCamelCaseWordBegin extends CamelCaseBaseMovement {
-  keys = ['<leader>', 'w'];
+  // NOTIV
+  keys = ['≤']; // keys = ['<leader>', 'w'];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     if (
@@ -51,7 +52,8 @@ class MoveCamelCaseWordBegin extends CamelCaseBaseMovement {
 // based off of `MoveWordEnd`
 @RegisterAction
 class MoveCamelCaseWordEnd extends CamelCaseBaseMovement {
-  keys = ['<leader>', 'e'];
+  // NOTIV
+  keys = ['≥']; // keys = ['<leader>', 'e'];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return position.nextWordEnd(vimState.document, { wordType: WordType.CamelCase });
@@ -67,7 +69,8 @@ class MoveCamelCaseWordEnd extends CamelCaseBaseMovement {
 // based off of `MoveBeginningWord`
 @RegisterAction
 class MoveBeginningCamelCaseWord extends CamelCaseBaseMovement {
-  keys = ['<leader>', 'b'];
+  // NOTIV
+  keys = ['≈']; // keys = ['<leader>', 'b'];
 
   public async execAction(position: Position, vimState: VimState): Promise<Position> {
     return position.prevWordStart(vimState.document, { wordType: WordType.CamelCase });

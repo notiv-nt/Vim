@@ -112,7 +112,8 @@ export abstract class BaseOperator extends BaseAction {
 
 @RegisterAction
 export class DeleteOperator extends BaseOperator {
-  public keys = ['d'];
+  // NOTIV
+  public keys = ['Z']; // public keys = ['d'];
   public modes = [Mode.Normal, Mode.Visual, Mode.VisualLine];
 
   /**
@@ -228,7 +229,8 @@ export class DeleteOperator extends BaseOperator {
 
 @RegisterAction
 class DeleteOperatorVisual extends BaseOperator {
-  public keys = ['D'];
+  // NOTIV
+  public keys = ['<Nope>']; // public keys = ['D'];
   public modes = [Mode.Visual, Mode.VisualLine];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -242,8 +244,10 @@ class DeleteOperatorVisual extends BaseOperator {
 
 @RegisterAction
 export class YankOperator extends BaseOperator {
-  public keys = ['y'];
-  public modes = [Mode.Normal, Mode.Visual, Mode.VisualLine];
+  // NOTIV
+  public keys = ['f']; // public keys = ['y'];
+  // NOTIV
+  public modes = [Mode.Visual, Mode.VisualLine]; // public modes = [Mode.Normal, Mode.Visual, Mode.VisualLine];
   canBeRepeatedWithDot = false;
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -328,7 +332,8 @@ class FilterOperator extends BaseOperator {
 
 @RegisterAction
 class ShiftYankOperatorVisual extends BaseOperator {
-  public keys = ['Y'];
+  // NOTIV
+  public keys = ['F']; // public keys = ['Y'];
   public modes = [Mode.Visual, Mode.VisualLine, Mode.VisualBlock];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -340,7 +345,8 @@ class ShiftYankOperatorVisual extends BaseOperator {
 
 @RegisterAction
 class DeleteOperatorXVisual extends BaseOperator {
-  public keys = [['x'], ['<Del>']];
+  // NOTIV
+  public keys = [['q'], ['<Del>']]; // public keys = [['x'], ['<Del>']];
   public modes = [Mode.Visual, Mode.VisualLine];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -350,7 +356,8 @@ class DeleteOperatorXVisual extends BaseOperator {
 
 @RegisterAction
 class ChangeOperatorSVisual extends BaseOperator {
-  public keys = ['s'];
+  // NOTIV
+  public keys = ['o']; // public keys = ['s'];
   public modes = [Mode.Visual, Mode.VisualLine];
 
   // Don't clash with Sneak plugin
@@ -387,7 +394,8 @@ class FormatOperator extends BaseOperator {
 
 @RegisterAction
 class UpperCaseOperator extends BaseOperator {
-  public keys = [['g', 'U'], ['U']];
+  // NOTIV
+  public keys = [['g', 'U']]; // public keys = [['g', 'U'], ['U']];
   public modes = [Mode.Visual, Mode.VisualLine];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -415,7 +423,8 @@ class UpperCaseWithMotion extends UpperCaseOperator {
 
 @RegisterAction
 class UpperCaseVisualBlockOperator extends BaseOperator {
-  public keys = [['g', 'U'], ['U']];
+  // NOTIV
+  public keys = [['g', 'U']]; // public keys = [['g', 'U'], ['U']];
   public modes = [Mode.VisualBlock];
 
   public async run(vimState: VimState, startPos: Position, endPos: Position): Promise<void> {
@@ -434,7 +443,8 @@ class UpperCaseVisualBlockOperator extends BaseOperator {
 
 @RegisterAction
 class LowerCaseOperator extends BaseOperator {
-  public keys = [['g', 'u'], ['u']];
+  // NOTIV
+  public keys = [['g', 'u']]; // public keys = [['g', 'u'], ['u']];
   public modes = [Mode.Visual, Mode.VisualLine];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -462,7 +472,8 @@ class LowerCaseWithMotion extends LowerCaseOperator {
 
 @RegisterAction
 class LowerCaseVisualBlockOperator extends BaseOperator {
-  public keys = [['g', 'u'], ['u']];
+  // NOTIV
+  public keys = [['g', 'u']]; // public keys = [['g', 'u'], ['u']];
   public modes = [Mode.VisualBlock];
 
   public async run(vimState: VimState, startPos: Position, endPos: Position): Promise<void> {
@@ -586,7 +597,8 @@ class OutdentOperatorInVisualModesIsAWeirdSpecialCase extends BaseOperator {
 
 @RegisterAction
 export class ChangeOperator extends BaseOperator {
-  public keys = ['c'];
+  // NOTIV
+  public keys = ['<Nope>']; // public keys = ['c'];
   public modes = [Mode.Normal, Mode.Visual, Mode.VisualLine];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -661,7 +673,8 @@ export class ChangeOperator extends BaseOperator {
 
 @RegisterAction
 class YankVisualBlockMode extends BaseOperator {
-  public keys = ['y'];
+  // NOTIV
+  public keys = ['f']; // public keys = ['y'];
   public modes = [Mode.VisualBlock];
   canBeRepeatedWithDot = false;
   runsOnceForEveryCursor() {
@@ -695,7 +708,8 @@ class YankVisualBlockMode extends BaseOperator {
 
 @RegisterAction
 export class ToggleCaseOperator extends BaseOperator {
-  public keys = [['g', '~'], ['~']];
+  // NOTIV
+  public keys = [['~']]; // public keys = [['g', '~'], ['~']];
   public modes = [Mode.Visual, Mode.VisualLine];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
@@ -734,7 +748,8 @@ export class ToggleCaseOperator extends BaseOperator {
 
 @RegisterAction
 class ToggleCaseVisualBlockOperator extends BaseOperator {
-  public keys = [['g', '~'], ['~']];
+  // NOTIV
+  public keys = ['~']; // public keys = [['g', '~'], ['~']];
   public modes = [Mode.VisualBlock];
 
   public async run(vimState: VimState, startPos: Position, endPos: Position): Promise<void> {

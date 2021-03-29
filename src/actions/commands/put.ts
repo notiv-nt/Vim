@@ -300,7 +300,8 @@ abstract class BasePutCommand extends BaseCommand {
 
 @RegisterAction
 class PutCommand extends BasePutCommand {
-  keys: string[] | string[][] = ['p'];
+  // NOTIV
+  keys: string[] | string[][] = ['l']; // keys: string[] | string[][] = ['p'];
 
   protected putBefore(): boolean {
     return false;
@@ -384,7 +385,8 @@ class PutCommand extends BasePutCommand {
 
 @RegisterAction
 class PutBeforeCommand extends PutCommand {
-  keys: string[] | string[][] = ['P'];
+  // NOTIV
+  keys: string[] | string[][] = ['L']; // keys: string[] | string[][] = ['P'];
 
   protected putBefore(): boolean {
     return true;

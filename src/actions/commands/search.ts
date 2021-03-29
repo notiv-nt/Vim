@@ -227,7 +227,8 @@ class CommandSearchVisualBackward extends BaseCommand {
 @RegisterAction
 class CommandSearchForwards extends BaseCommand {
   modes = [Mode.Normal, Mode.Visual, Mode.VisualLine, Mode.VisualBlock];
-  keys = ['/'];
+  // NOTIV
+  keys = [';']; // keys = ['/'];
   isMotion = true;
   isJump = true;
   runsOnceForEveryCursor() {
@@ -252,7 +253,8 @@ class CommandSearchForwards extends BaseCommand {
 @RegisterAction
 class CommandSearchBackwards extends BaseCommand {
   modes = [Mode.Normal, Mode.Visual, Mode.VisualLine, Mode.VisualBlock];
-  keys = ['?'];
+  // NOTIV
+  keys = [':']; // keys = ['?'];
   isMotion = true;
   isJump = true;
   runsOnceForEveryCursor() {
