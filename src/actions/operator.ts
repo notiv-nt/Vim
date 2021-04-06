@@ -493,7 +493,8 @@ class LowerCaseVisualBlockOperator extends BaseOperator {
 @RegisterAction
 class IndentOperator extends BaseOperator {
   modes = [Mode.Normal];
-  keys = ['>'];
+  // NOTIV
+  keys = ['<Nope>']; // keys = ['>'];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
     vimState.editor.selection = new vscode.Selection(start.getLineBegin(), end.getLineEnd());
@@ -517,7 +518,8 @@ class IndentOperator extends BaseOperator {
 @RegisterAction
 class IndentOperatorInVisualModesIsAWeirdSpecialCase extends BaseOperator {
   modes = [Mode.Visual, Mode.VisualLine, Mode.VisualBlock];
-  keys = ['>'];
+  // NOTIV
+  keys = ['<Nope>']; // keys = ['>'];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
     // Repeating this command with dot should apply the indent to the previous selection
@@ -546,7 +548,8 @@ class IndentOperatorInVisualModesIsAWeirdSpecialCase extends BaseOperator {
 @RegisterAction
 class OutdentOperator extends BaseOperator {
   modes = [Mode.Normal];
-  keys = ['<'];
+  // NOTIV
+  keys = ['<Nope>']; // keys = ['<'];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
     vimState.editor.selection = new vscode.Selection(start, end.getLineEnd());
@@ -566,7 +569,8 @@ class OutdentOperator extends BaseOperator {
 @RegisterAction
 class OutdentOperatorInVisualModesIsAWeirdSpecialCase extends BaseOperator {
   modes = [Mode.Visual, Mode.VisualLine, Mode.VisualBlock];
-  keys = ['<'];
+  // NOTIV
+  keys = ['<Nope>']; // keys = ['<'];
 
   public async run(vimState: VimState, start: Position, end: Position): Promise<void> {
     // Repeating this command with dot should apply the indent to the previous selection
