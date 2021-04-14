@@ -95,11 +95,12 @@ abstract class BasePutCommand extends BaseCommand {
       };
 
       vimState.recordedState.registerName = configuration.useSystemClipboard ? '*' : '"';
-      Register.put(
-        vimState,
-        vimState.document.getText(new vscode.Range(replaceRange.start, replaceRange.stop)),
-        this.multicursorIndex
-      );
+      // NOTIV
+      // Register.put(
+      //   vimState,
+      //   vimState.document.getText(new vscode.Range(replaceRange.start, replaceRange.stop)),
+      //   this.multicursorIndex
+      // );
     }
 
     // Report lines changed
