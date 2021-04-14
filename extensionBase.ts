@@ -246,20 +246,18 @@ export async function activate(context: vscode.ExtensionContext, handleLocal: bo
         return;
       }
 
-      // NOTIV ------------
-      // const oldFileRegister = (await Register.get('%'))?.text;
-      // const relativePath = vscode.workspace.asRelativePath(
-      //   vscode.window.activeTextEditor.document.uri,
-      //   false
-      // );
+      const oldFileRegister = (await Register.get('%'))?.text;
+      const relativePath = vscode.workspace.asRelativePath(
+        vscode.window.activeTextEditor.document.uri,
+        false
+      );
 
-      // if (relativePath !== oldFileRegister) {
-      //   if (oldFileRegister && oldFileRegister !== '') {
-      //     Register.setReadonlyRegister('#', oldFileRegister as string);
-      //   }
-      //   Register.setReadonlyRegister('%', relativePath);
-      // }
-      // NOTIV /------------
+      if (relativePath !== oldFileRegister) {
+        if (oldFileRegister && oldFileRegister !== '') {
+          Register.setReadonlyRegister('#', oldFileRegister as string);
+        }
+        Register.setReadonlyRegister('%', relativePath);
+      }
 
       taskQueue.enqueueTask(async () => {
         const mh = await getAndUpdateModeHandler(true);
